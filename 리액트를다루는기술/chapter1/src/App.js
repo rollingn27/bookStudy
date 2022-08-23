@@ -1,5 +1,8 @@
 import './App.css';
 import { useState } from 'react';
+import EventPractice from './EventPractice';
+import IterationSample from './IterationSample';
+import IterationSample2 from './IterationSample2';
 
 function App() {
   const name = '리액트';
@@ -20,23 +23,26 @@ function App() {
     // or로 undefined 일때 값 지정해 주기
     
     <>
-    <div name="no1">
-      {name==="리액트" ?(<h1>리액트입니다.</h1>) : (<h2>리액트가 아닙니다.</h2>)}
-    </div>    
-    <div name="no2">
-      {andName === '리액트' && <h1>리액트 입니다. </h1>}
-      
-    </div>
-    <div name="no3">
-    {unName || "리액트"}
-    </div>    
-    {/* 직접 바꿀 경우 리렌더링이 일어나지 않음. */}
-    <div onClick={() => object.a = 5}>
-      {object.a}
-    </div>
-    <div onClick={() => setObject({...object, b:5})}>
-      {object.b}
-    </div>
+      <div name="no1">
+        {name==="리액트" ?(<h1>리액트입니다.</h1>) : (<h2>리액트가 아닙니다.</h2>)}
+      </div>    
+      <div name="no2">
+        {andName === '리액트' && <h1>리액트 입니다. </h1>}
+        
+      </div>
+      <div name="no3">
+      {unName || "리액트"}
+      </div>    
+      {/* 직접 바꿀 경우 리렌더링이 일어나지 않음. */}
+      <div onClick={() => object.a = 5}>
+        {object.a}
+      </div>
+      <div onClick={() => setObject({...object, b:5})}>
+        {object.b}
+      </div>
+      <EventPractice />
+      <IterationSample />
+      <IterationSample2 />
     </>
   );
 }
