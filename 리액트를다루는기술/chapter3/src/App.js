@@ -1,6 +1,7 @@
 import Average from './Average';
 import Counter from './Counter';
 import Info from './Info';
+import InfoUseInput from './InfoUseInput';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Counter />
       <Info />
       <Average />
+      <InfoUseInput />      
     </>
   );
 }
