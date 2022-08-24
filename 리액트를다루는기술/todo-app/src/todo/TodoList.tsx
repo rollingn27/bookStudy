@@ -1,5 +1,6 @@
 import TodoListItem from './TodoListItem';
 import './TodoList.scss';
+import React from 'react';
 
 export type todo = {
   id: number;
@@ -23,4 +24,5 @@ const TodoList = ({ todos, onRemove, onToggle }: todoListProps) => {
   );
 };
 
-export default TodoList;
+// 현재는 불필요한 렌더링은 발생하지 않음. 
+export default React.memo(TodoList);
