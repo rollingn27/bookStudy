@@ -32,33 +32,24 @@ function App() {
   // 고윳값으로 사용될 id
   const nextId = useRef(4);
 
-  const onInsert = useCallback(
-    (text: string) => {
-      const todo = {
-        id: nextId.current,
-        text,
-        checked: false,
-      };
+  const onInsert = useCallback((text: string) => {
+    const todo = {
+      id: nextId.current,
+      text,
+      checked: false,
+    };
 
-      setTodos(todos.concat(todo));
-      nextId.current += 1;
-    },
-    [todos],
-  );
+    setTodos((todos) => todos.concat(todo));
+    nextId.current += 1;
+  }, []);
 
-  const onRemove = useCallback(
-    (id: number) => {
-      setTodos(todos.filter((todo: todo) => todo.id !== id));
-    },
-    [todos],
-  );
+  const onRemove = useCallback((id: number) => {
+    setTodos((todos) => todos.filter((todo: todo) => todo.id !== id));
+  }, []);
 
-  const onToggle = useCallback(
-    (id: number) => {
-      setTodos(todos.map((todo: todo) => (todo.id === id ? { ...todo, checked: !todo.checked } : todo)));
-    },
-    [todos],
-  );
+  const onToggle = useCallback((id: number) => {
+    setTodos((todos) => todos.map((todo: todo) => (todo.id === id ? { ...todo, checked: !todo.checked } : todo)));
+  }, []);
 
   return (
     <>
