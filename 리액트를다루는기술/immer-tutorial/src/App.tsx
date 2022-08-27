@@ -1,5 +1,6 @@
 import React, { useRef, useCallback, useState, ReactEventHandler, ReactHTMLElement } from 'react';
 import './App.css';
+import produce from 'immer';
 
 type info = {
   id: number;
@@ -18,10 +19,17 @@ function App() {
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target;
-      setForm({
-        ...form,
-        [name]: [value],
-      });
+      // setForm({
+      //   ...form,
+      //   [name]: [value],
+      // });
+
+      // immer 적용
+      setForm(
+        produce(form, (draft: { [x: string]: string }) => {
+          draft[name] = value;
+        }),
+      );
     },
     [form],
   );
@@ -37,10 +45,16 @@ function App() {
       };
 
       // array에 새 항목 등록
-      setData({
-        ...data,
-        array: data.array.concat(info),
-      });
+      // setData({
+      //   ...data,
+      //   array: data.array.concat(info),
+      // });
+      // immer 적용
+      setData(
+        produce(data, (draft) => {
+          draft.array.push(info);
+        }),
+      );
 
       // form 초기화
       setForm({
@@ -55,10 +69,18 @@ function App() {
   // 항목을 삭제하는 함수
   const onRemove = useCallback(
     (id: number) => {
-      setData({
-        ...data,
-        array: data.array.filter((info: info) => info.id !== id),
-      });
+      // setData({
+      //   ...data,
+      //   array: data.array.filter((info: info) => info.id !== id),
+      // });
+      setData(
+        produce(data, (draft) => {
+          draft.array.splice(
+            draft.array.findIndex((info) => info.id === id),
+            1,
+          );
+        }),
+      );
     },
     [data],
   );
