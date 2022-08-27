@@ -3,24 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "latest",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.55",    
+    "@types/node": "^16.11.55",
+    "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/react-virtualized": "latest",
     "classnames": "^2.3.1",
     "react": "latest",
     "react-dom": "latest",
     "react-icons": "^4.4.0",
     "react-scripts": "5.0.1",
+    "react-virtualized": "latest",
     "sass": "^1.54.5",
+    "typesafe-actions": "^5.1.0",
     "typescript": "latest",
-    "web-vitals": "^2.1.4",
-    "react-virtualized": "latest",    
-    "@types/react-virtualized": "latest",    
-    "@types/react": "latest",    
-    "@material-ui/core": "latest"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -51,5 +52,5 @@
   },
   "resolutions": {
     "@types/react": "17.0.38"
-  }  
+  }
 }

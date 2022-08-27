@@ -7,7 +7,7 @@ import { todo } from './todo/TodoList';
 
 function createBulkTodos() {
   const array = [];
-  for (let i = 1; i <= 2500; i++) {
+  for (let i = 1; i <= 3; i++) {
     array.push({
       id: i,
       text: `할 일 ${i}`,
@@ -22,16 +22,17 @@ type action = {
   todo?: todo;
   id?: number;
 };
+
 // 리듀서 적용하기
 function todoReducer(todos: todo[], action: action) {
   switch (action.type) {
     case 'INSERT':
-      return todos.filter((todo: todo) => todo.id !== action.id);
-
+      if (action.todo !== undefined) return todos.concat(action.todo);
     case 'REMOVE':
-      return todos.filter((todo: todo) => todo.id !== action.id);
+      if (action.id !== undefined) return todos.filter((todo: todo) => todo.id !== action.id);
     case 'TOGGLE':
-      return todos.map((todo: todo) => (todo.id === action.id ? { ...todo, checked: !todo.checked } : todo));
+      if (action.id !== undefined)
+        return todos.map((todo: todo) => (todo.id === action.id ? { ...todo, checked: !todo.checked } : todo));
     default:
       return todos;
   }
@@ -62,7 +63,7 @@ function App() {
     };
 
     // setTodos((todos) => todos.concat(todo));
-    dispatch({ type: 'INSERT' });
+    dispatch({ type: 'INSERT', todo: todo });
     nextId.current += 1;
   }, []);
 
