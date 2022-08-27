@@ -16,23 +16,20 @@ function App() {
   const [data, setData] = useState(initialData);
 
   // input 수정을 위한 함수
-  const onChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target;
-      // setForm({
-      //   ...form,
-      //   [name]: [value],
-      // });
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    // setForm({
+    //   ...form,
+    //   [name]: [value],
+    // });
 
-      // immer 적용
-      setForm(
-        produce(form, (draft: { [x: string]: string }) => {
-          draft[name] = value;
-        }),
-      );
-    },
-    [form],
-  );
+    // immer 적용
+    setForm(
+      produce((draft: { [x: string]: string }) => {
+        draft[name] = value;
+      }),
+    );
+  }, []);
 
   // form 등록을 위한 함수
   const onSubmit = useCallback(
@@ -51,7 +48,7 @@ function App() {
       // });
       // immer 적용
       setData(
-        produce(data, (draft) => {
+        produce((draft) => {
           draft.array.push(info);
         }),
       );
@@ -63,27 +60,24 @@ function App() {
       });
       nextId.current += 1;
     },
-    [data, form.name, form.username],
+    [form.name, form.username],
   );
 
   // 항목을 삭제하는 함수
-  const onRemove = useCallback(
-    (id: number) => {
-      // setData({
-      //   ...data,
-      //   array: data.array.filter((info: info) => info.id !== id),
-      // });
-      setData(
-        produce(data, (draft) => {
-          draft.array.splice(
-            draft.array.findIndex((info) => info.id === id),
-            1,
-          );
-        }),
-      );
-    },
-    [data],
-  );
+  const onRemove = useCallback((id: number) => {
+    // setData({
+    //   ...data,
+    //   array: data.array.filter((info: info) => info.id !== id),
+    // });
+    setData(
+      produce((draft) => {
+        draft.array.splice(
+          draft.array.findIndex((info) => info.id === id),
+          1,
+        );
+      }),
+    );
+  }, []);
 
   return (
     <div>
