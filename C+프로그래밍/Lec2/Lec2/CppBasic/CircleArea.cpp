@@ -4,6 +4,7 @@ using namespace std;
 int main()
 {
 	const double PI{ 3.14159 };
+	// constexpr 컴파일시 평가, 실행 속도를 향상 시킬 수 있다.
 	constexpr int a = 10;
 	double radius;
 
