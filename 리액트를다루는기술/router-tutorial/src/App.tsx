@@ -3,6 +3,7 @@ import './App.css';
 import About from './component/About';
 import Home from './component/Home';
 import Profiles from './component/Profiles';
+import UseNavigate from './component/UseNavigate';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         <li>
           <Link to="/profiles">프로필</Link>
         </li>
+        <li>
+          <Link to="/navi">useNavigate 예제</Link>
+        </li>
       </ul>
       <hr />
       <Routes>
@@ -24,6 +28,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/info" element={<About />} />
         <Route path="/profiles/*" element={<Profiles />} />
+        <Route path="/navi/" element={<UseNavigate />} />
       </Routes>
     </div>
   );
