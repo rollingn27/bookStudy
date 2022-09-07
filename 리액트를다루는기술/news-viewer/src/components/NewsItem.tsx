@@ -1,13 +1,19 @@
 import styled from "styled-components";
 
-type newsItemProps = {
+type article = {
   title: string;
   description: string;
   url: string;
   urlToImage: string;
 };
 
-const NewsItem = ({ title, description, url, urlToImage }: newsItemProps) => {
+type newsItemProps = {
+  article: article;
+};
+
+const NewsItem = ({ article }: newsItemProps) => {
+  const { title, description, url, urlToImage } = article;
+  console.log(title, description, url, urlToImage);
   return (
     <NewsItemBlock>
       {urlToImage && (
@@ -23,6 +29,7 @@ const NewsItem = ({ title, description, url, urlToImage }: newsItemProps) => {
             {title}
           </a>
         </h2>
+        <p>{description}</p>
       </div>
     </NewsItemBlock>
   );
