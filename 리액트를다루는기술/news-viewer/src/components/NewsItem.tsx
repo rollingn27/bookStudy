@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-type article = {
+export type article = {
   title: string;
   description: string;
   url: string;
