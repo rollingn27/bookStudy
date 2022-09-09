@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import NewsItem, { article } from "./NewsItem";
 
-const NewsList = () => {
+type newsListProps = {
+  category: string;
+};
+
+const NewsList = ({ category }: newsListProps) => {
   const [articles, setArticles] = useState<article[]>();
   const [loading, setLoading] = useState(false);
 
@@ -12,9 +16,10 @@ const NewsList = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
+        // 카테고리 지정 쿼리
+        const query = category === "all" ? "" : `&category=${category}`;
         const response = await axios.get(
-          "https://newsapi.org/v2/top-headlines?country=kr&apikey=" +
-            process.env.REACT_APP_NEWS_API
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apikey=${process.env.REACT_APP_NEWS_API}`
         );
         setArticles(response.data.articles);
       } catch (e) {
@@ -24,7 +29,7 @@ const NewsList = () => {
     };
 
     fetchData();
-  }, []);
+  }, [category]);
 
   // 로딩중일때
   if (loading) {
