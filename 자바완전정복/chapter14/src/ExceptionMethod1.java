@@ -1,5 +1,9 @@
 package messagefd;
 
+class MyException extends Exception {
+
+}
+
 public class ExceptionMethod1
 {
     public static void main(String[] args)

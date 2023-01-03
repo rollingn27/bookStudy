@@ -4,7 +4,7 @@ import styled from "styled-components";
 import NewsItem, { article } from "./NewsItem";
 
 type newsListProps = {
-  category: string;
+  category?: string;
 };
 
 const NewsList = ({ category }: newsListProps) => {
